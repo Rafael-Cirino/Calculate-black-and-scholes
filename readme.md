@@ -39,9 +39,9 @@ O modelo de black and scholes possui as seguintes fórmulas
 #### d1 e d2
 Estas são as variaveis utilizadas para determinar a distribuição normal da opção, podendo ser encontradas das seguinte forma
 
-$ d_1 = \frac{log(\frac{S}{K}) + (r + 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}$
+$$d_1 = \frac{log(\frac{S}{K}) + (r + 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}$$
 
-$ d_2 = \frac{log(\frac{S}{K}) + (r - 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}$
+$$d_2 = \frac{log(\frac{S}{K}) + (r - 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}$$
 
 OBS: Para encontrar $d_2$ basta inverter o sinal de $0,5 \cdot vol^2$ em $d_1$
 
