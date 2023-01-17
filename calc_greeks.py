@@ -13,10 +13,6 @@ import scipy.stats as ss
 pd.options.mode.chained_assignment = None
 np.warnings.filterwarnings("ignore")
 
-NAME_CS = (
-    "Consolidado/strategy_btc/early fev-jun/btc_dte_early_stop_exp_0.2_all-time_24h.csv"
-)
-
 
 def calc_vol(df_vol, option):
     """Calculate volatility of option and greeks
