@@ -26,9 +26,9 @@ O black considera que a variação do underlying segue uma distribuição normal
 O modelo de black and scholes possui as seguintes fórmulas
 
 - Para Call:
-    $C(S, K, r, dte) = N(d_1) \cdot S - N(d_2) \cdot Ke^{-r \cdot dte}$
+    $$C(S, K, r, dte) = N(d_1) \cdot S - N(d_2) \cdot Ke^{-r \cdot dte}$$
 - Para Put:
-    - $ P(S, K, r, dte) = N(-d_2) \cdot Ke^{-r \cdot dte} - N(-d_1) \cdot S $
+    $$P(S, K, r, dte) = N(-d_2) \cdot Ke^{-r \cdot dte} - N(-d_1) \cdot S$$
 - Onde:
     - S: underlying da opção
     - K: Strike da opção
