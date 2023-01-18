@@ -45,6 +45,12 @@ $$d_2 = \frac{log(\frac{S}{K}) + (r - 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}
 
 OBS: Para encontrar $d_2$ basta inverter o sinal de $0,5 \cdot vol^2$ em $d_1$
 
+## Requirements
+
+- Pandas: pip install pandas
+- Numpy: pip install numpy
+- Scipy: pip install scipy
+
 ## Resultados
 Afim de validar o código, foi realizada uma comparação com o modelo de black and scholes da exchange Deribit, para derivatios em bitcoin
 
@@ -56,6 +62,8 @@ Na tabela a seguir temos o erro médio observado para as gregas.
 | Vega  | 5,5%  | 5,6%  |
 | Gamma | 3%  | 1,3%  |
 | Theta  | 9,8%  | 8,3%  |
+
+Analisando os resultados, podemos dizer que para as gregas delta, theta e gamma o código aqui implementado convergiu com o modelo da Deribit, entretanto, para theta foi obtido erro próximo dos 10%, sendo assim não é recomendado utilizar este código caso a variável theta seja muito importante no seu backtest ou análise das opções.
 
 ## Referências
 - https://www.suno.com.br/artigos/black-scholes/
