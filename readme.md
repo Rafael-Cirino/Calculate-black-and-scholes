@@ -54,8 +54,10 @@ OBS: Para encontrar $d_2$ basta inverter o sinal de $0,5 \cdot vol^2$ em $d_1$
 ## Run
 
 Chame a funçao calc_vol, passando como argumento o dataframe e C para Call e P para Put
-` calc_vol(dataframe, "P") `
-` calc_vol(dataframe, "C") `
+``` 
+calc_vol(dataframe, "P")
+calc_vol(dataframe, "C") 
+```
 
 ## Resultados
 Afim de validar o código, foi realizada uma comparação com o modelo de black and scholes da exchange Deribit, para derivatios em bitcoin
