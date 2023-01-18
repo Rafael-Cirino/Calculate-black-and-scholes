@@ -5,7 +5,7 @@
 O modelo de black and scholes foi desenvolvido na década de 70 pelos economistas Fischer Black, Robert Merton e Myron Scholes. Ele é amplamente utilizado para calcular os valores teóricos de opções no mercado de derivativos.
 
 ### O que é um derivativo?
-
+É um instrumento financeiro que possui seu preço atrelado a um ativo. Por exemplo, ao realizar um derivativo em dólar, você está operando um contrato que tem como base a variação da moeda, mas não está investindo diretamente nela.
 
 ### O modelo
 #### Entradas
@@ -44,6 +44,18 @@ $$d_1 = \frac{log(\frac{S}{K}) + (r + 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}
 $$d_2 = \frac{log(\frac{S}{K}) + (r - 0,5 \cdot vol^2)dte}{vol \cdot \sqrt{dte}}$$
 
 OBS: Para encontrar $d_2$ basta inverter o sinal de $0,5 \cdot vol^2$ em $d_1$
+
+## Resultados
+Afim de validar o código, foi realizada uma comparação com o modelo de black and scholes da exchange Deribit, para derivatios em bitcoin
+
+Na tabela a seguir temos o erro médio observado para as gregas.
+
+| Greek | Put | Call |
+| --- | --- | --- |
+| Delta  | 4% | 4%  |
+| Vega  | 5,5%  | 5,6%  |
+| Gamma | 3%  | 1,3%  |
+| Theta  | 9,8%  | 8,3%  |
 
 ## Referências
 - https://www.suno.com.br/artigos/black-scholes/
