@@ -2,10 +2,15 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import polars as pl
 import typer
 from rich.console import Console
 
-from black_scholes.data import enrich_option_frame, load_option_csv, summarize_greeks
+from black_scholes.data import (
+    calc_implied_volatility_and_greeks,
+    enrich_option_frame,
+    load_option_csv,
+)
 from black_scholes.pricing import Greeks, option_price
 
 app = typer.Typer(help="Black-Scholes option analytics for option datasets.")
@@ -33,11 +38,42 @@ def example() -> None:
 def analyze(
     csv_path: Path, option: str = typer.Option("C", help="Option side: C or P")
 ) -> None:
-    """Load a CSV file, enrich the option data, and summarize the selected option side."""
+    """Load a CSV file, solve implied volatility, and report Greeks for the selected option side."""
     df = load_option_csv(csv_path)
     df = enrich_option_frame(df)
-    summary = summarize_greeks(df, option)
-    console.print(summary.head(10))
+    result = calc_implied_volatility_and_greeks(df, option)
+    console.print(
+        result.select(
+            [
+                "kind",
+                "strike",
+                "underlying_avg",
+                "dte",
+                "implied_vol",
+                "delta",
+                "vega",
+                "theta",
+                "gamma",
+                "rho",
+            ]
+        ).head(10)
+    )
+
+
+@app.command()
+def convert(
+    csv_path: Path,
+    parquet_path: Path = typer.Argument(
+        None,
+        help="Output Parquet path (defaults to the CSV path with a .parquet suffix)",
+    ),
+) -> None:
+    """Convert an option CSV dataset into a Parquet file."""
+    out_path = parquet_path or csv_path.with_suffix(".parquet")
+    df = pl.read_csv(str(csv_path))
+    df.write_parquet(str(out_path))
+    console.print(f"Converted: {csv_path} -> {out_path}")
+    console.print(f"Rows: {df.height}, Columns: {df.width}")
 
 
 @app.command()

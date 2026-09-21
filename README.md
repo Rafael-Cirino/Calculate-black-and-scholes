@@ -38,8 +38,16 @@ uv run black-scholes price --s 100 --k 100 --t 1 --r 0.05 --q 0 --volatility 0.2
 
 #### Analyze a CSV dataset
 
+Solves implied volatility per row and reports all Greeks (delta, vega, theta, gamma, rho) for the selected option side:
+
 ```bash
 uv run black-scholes analyze ./btc_dte_early_stop_exp_0.2_all-time_24h.csv --option C
+```
+
+#### Convert a CSV dataset to Parquet
+
+```bash
+uv run black-scholes convert ./btc_dte_early_stop_exp_0.2_all-time_24h.csv
 ```
 
 ### Project structure
@@ -47,7 +55,6 @@ uv run black-scholes analyze ./btc_dte_early_stop_exp_0.2_all-time_24h.csv --opt
 ```text
 .
 ├── README.md
-├── README.pt-BR.md
 ├── pyproject.toml
 ├── src/
 │   └── black_scholes/
@@ -123,8 +130,16 @@ uv run black-scholes price --s 100 --k 100 --t 1 --r 0.05 --q 0 --volatility 0.2
 
 #### Analisar um arquivo CSV
 
+Resolve a volatilidade implícita linha a linha e reporta todas as gregas (delta, vega, theta, gamma, rho) para o lado da opção selecionado:
+
 ```bash
 uv run black-scholes analyze ./btc_dte_early_stop_exp_0.2_all-time_24h.csv --option C
+```
+
+#### Converter um arquivo CSV para Parquet
+
+```bash
+uv run black-scholes convert ./btc_dte_early_stop_exp_0.2_all-time_24h.csv
 ```
 
 ### Estrutura do projeto
@@ -132,7 +147,6 @@ uv run black-scholes analyze ./btc_dte_early_stop_exp_0.2_all-time_24h.csv --opt
 ```text
 .
 ├── README.md
-├── README.pt-BR.md
 ├── pyproject.toml
 ├── src/
 │   └── black_scholes/
